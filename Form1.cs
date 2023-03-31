@@ -52,16 +52,21 @@ namespace MyCalculatorWinForms
         private void MemoryFill(string TextFromDisplay, string UserOperator)
         {
             // MemoryFill(textBoxDisplay.Text,"+");
-            MemoryOperator = UserOperator;
             if (MemoryNumber1 == 0)
             {
+                MemoryOperator = UserOperator;
                 textBoxHistory.Text = textBoxDisplay.Text + " " + MemoryOperator + " ";
                 double.TryParse(textBoxDisplay.Text, out MemoryNumber1);
                 textBoxDisplay.Text = string.Empty;
+
             }
             else if (MemoryNumber1 != 0) //vypocet
             {
                 MemoryFillEquals();
+                MemoryOperator = UserOperator;
+                double.TryParse(textBoxDisplay.Text, out MemoryNumber1);
+                textBoxHistory.Text += MemoryOperator; 
+                
             }
         }
 
@@ -203,26 +208,28 @@ namespace MyCalculatorWinForms
         {
             MemoryFillEquals();
         }
-
+        //
+        // Keyboard down
+        //
         private void FormCalculator_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.D0)
+            if ((e.KeyCode == Keys.D0) || (e.KeyCode == Keys.NumPad0))
             {
                 buttonNumber0_Click(sender, e);
             }
-            else if (e.KeyCode == Keys.D1)
+            else if ((e.KeyCode == Keys.D1) || (e.KeyCode == Keys.NumPad1))
             {
                 buttonNumber1_Click(sender, e);
             }
-            else if (e.KeyCode == Keys.D2)
+            else if ((e.KeyCode == Keys.D2) || (e.KeyCode == Keys.NumPad2))
             {
                 buttonNumber2_Click(sender, e);
             }
-            else if (e.KeyCode == Keys.D3)
+            else if ((e.KeyCode == Keys.D3) || (e.KeyCode == Keys.NumPad3))
             {
                 buttonNumber3_Click(sender, e);
             }
-            else if (e.KeyCode == Keys.D4)
+            else if ((e.KeyCode == Keys.D4) || (e.KeyCode == Keys.NumPad4))
             {
                 buttonNumber4_Click(sender, e);
             }
@@ -234,15 +241,15 @@ namespace MyCalculatorWinForms
             {
                 buttonNumber6_Click(sender, e);
             }
-            else if (e.KeyCode == Keys.D7)
+            else if ((e.KeyCode == Keys.D7) || (e.KeyCode == Keys.NumPad7))
             {
                 buttonNumber7_Click(sender, e);
             }
-            else if (e.KeyCode == Keys.D8)
+            else if ((e.KeyCode == Keys.D8) || (e.KeyCode == Keys.NumPad8))
             {
                 buttonNumber8_Click(sender, e);
             }
-            else if (e.KeyCode == Keys.D9)
+            else if ((e.KeyCode == Keys.D9) || (e.KeyCode == Keys.NumPad9))
             {
                 buttonNumber9_Click(sender, e);
             }
@@ -256,11 +263,27 @@ namespace MyCalculatorWinForms
             }
             else if (e.KeyCode == Keys.Oemplus)
             {
-                buttonPlus_Click(sender, e);
+                buttonEquals_Click(sender, e);
             }
             else if (e.KeyCode == Keys.OemMinus)
             {
                 buttonMinus_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.Oem2)
+            {
+                buttonDivide_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.OemPeriod)
+            {
+                buttonDecimalPoint_Click(sender, e);
+            }
+            else if ((e.KeyCode == Keys.ShiftKey) || (e.KeyCode == Keys.D8))
+            {
+                buttonMultiple_Click(sender, e);
+            }
+            else if ((e.KeyCode == Keys.ShiftKey) || (e.KeyCode == Keys.Oemplus))
+            {
+                buttonPlus_Click(sender, e);
             }
         }
     }
