@@ -203,5 +203,65 @@ namespace MyCalculatorWinForms
         {
             MemoryFillEquals();
         }
+
+        private void FormCalculator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D0)
+            {
+                buttonNumber0_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.D1)
+            {
+                buttonNumber1_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.D2)
+            {
+                buttonNumber2_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.D3)
+            {
+                buttonNumber3_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.D4)
+            {
+                buttonNumber4_Click(sender, e);
+            }
+            else if ((e.KeyCode == Keys.D5) || (e.KeyCode == Keys.NumPad5))
+            {
+                buttonNumber5_Click(sender, e);
+            }
+            else if ((e.KeyCode == Keys.D6) || (e.KeyCode == Keys.NumPad6))
+            {
+                buttonNumber6_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.D7)
+            {
+                buttonNumber7_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.D8)
+            {
+                buttonNumber8_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.D9)
+            {
+                buttonNumber9_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.Delete)
+            {
+                buttonClearNumber_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.Back)
+            {
+                buttonDelete_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.Oemplus)
+            {
+                buttonPlus_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.OemMinus)
+            {
+                buttonMinus_Click(sender, e);
+            }
+        }
     }
 }
