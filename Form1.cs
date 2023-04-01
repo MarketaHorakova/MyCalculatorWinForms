@@ -65,7 +65,8 @@ namespace MyCalculatorWinForms
                 MemoryFillEquals();
                 MemoryOperator = UserOperator;
                 double.TryParse(textBoxDisplay.Text, out MemoryNumber1);
-                textBoxHistory.Text += MemoryOperator; 
+                textBoxHistory.Text = MemoryNumber1 + " " + MemoryOperator;
+                textBoxDisplay.Text = string.Empty;
                 
             }
         }
