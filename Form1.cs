@@ -49,6 +49,11 @@ namespace MyCalculatorWinForms
                 MemoryNumber1 = MemoryResult;
                 MemoryResult = 0;
             }
+            else if (textBoxHistory.Text == String.Empty)
+            {
+                textBoxHistory.Text += textBoxDisplay.Text;
+                double.TryParse(textBoxDisplay.Text, out MemoryNumber1);
+            }
             else
             {
                 textBoxHistory.Text = textBoxHistory.Text + textBoxDisplay.Text + " = ";
@@ -116,8 +121,7 @@ namespace MyCalculatorWinForms
         //
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            DeleteNumber = ButtonActions.DeleteText(textBoxDisplay.Text);
-            textBoxDisplay.Text = DeleteNumber;
+            textBoxDisplay.Text = textBoxDisplay.Text.Substring(0,textBoxDisplay.Text.Length);
         }
         //
         // Numbers
