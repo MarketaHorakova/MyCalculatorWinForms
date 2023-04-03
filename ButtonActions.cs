@@ -8,7 +8,7 @@ namespace MyCalculatorWinForms
 {
     public class ButtonActions
     {
-        static public string DeleteText(string numberString)
+        public static string DeleteText(string numberString)
         {
             int lengthNumber = numberString.Length;
             if (lengthNumber == 0)

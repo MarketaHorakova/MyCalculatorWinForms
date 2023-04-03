@@ -12,6 +12,13 @@ namespace MyCalculatorWinForms
 {
     public partial class FormCalculator : System.Windows.Forms.Form
     {
+        private double MemoryNumber1 = 0;
+        private double MemoryNumber2 = 0;
+        private double MemoryResult = 0;
+
+        private string DeleteNumber = string.Empty;
+        public string MemoryOperator = string.Empty;
+
         private void ClearMemory()
         {
             MemoryNumber1 = 0;
@@ -31,7 +38,7 @@ namespace MyCalculatorWinForms
                 textBoxDisplay.Text += buttonNumber;
             }
         }
-        private void MemoryFillEquals ()
+        private void EqualsCompute()
         {
             textBoxHistory.Text = textBoxHistory.Text + textBoxDisplay.Text + " = ";
             double.TryParse(textBoxDisplay.Text, out MemoryNumber2);
@@ -49,9 +56,8 @@ namespace MyCalculatorWinForms
             ClearMemory();
         }
 
-        private void MemoryFill(string TextFromDisplay, string UserOperator)
+        private void Compute(string UserOperator)
         {
-            // MemoryFill(textBoxDisplay.Text,"+");
             if (MemoryNumber1 == 0)
             {
                 MemoryOperator = UserOperator;
@@ -62,7 +68,7 @@ namespace MyCalculatorWinForms
             }
             else if (MemoryNumber1 != 0) //vypocet
             {
-                MemoryFillEquals();
+                EqualsCompute();
                 MemoryOperator = UserOperator;
                 double.TryParse(textBoxDisplay.Text, out MemoryNumber1);
                 textBoxHistory.Text = MemoryNumber1 + " " + MemoryOperator;
@@ -75,13 +81,6 @@ namespace MyCalculatorWinForms
         {
             InitializeComponent();
         }
-
-        private double MemoryNumber1 = 0;
-        private double MemoryNumber2 = 0;
-        private double MemoryResult = 0;
-
-        private string DeleteNumber = string.Empty;
-        public string MemoryOperator = string.Empty;
 
         //
         // Clear all variable and text boxes, set 0
@@ -166,7 +165,7 @@ namespace MyCalculatorWinForms
         {
             bool isNumber = double.TryParse(textBoxDisplay.Text, out double number);
 
-            textBoxDisplay.Text = Calculations.Revese(number);
+            textBoxDisplay.Text = Calculations.Reverse(number);
         }
         //
         // Decimal point, only 1 possible
@@ -184,22 +183,22 @@ namespace MyCalculatorWinForms
         //
         private void buttonPlus_Click(object sender, EventArgs e)
         {
-            MemoryFill(textBoxDisplay.Text,"+");
+            Compute("+");
         }
 
         private void buttonMinus_Click(object sender, EventArgs e)
         {
-            MemoryFill(textBoxDisplay.Text, "-");
+            Compute("-");
         }
 
         private void buttonMultiple_Click(object sender, EventArgs e)
         {
-            MemoryFill(textBoxDisplay.Text, "*");
+            Compute("*");
         }
 
         private void buttonDivide_Click(object sender, EventArgs e)
         {
-            MemoryFill(textBoxDisplay.Text, "/");
+            Compute("/");
         }
 
         //
@@ -207,7 +206,7 @@ namespace MyCalculatorWinForms
         //
         private void buttonEquals_Click(object sender, EventArgs e)
         {
-            MemoryFillEquals();
+            EqualsCompute();
         }
         //
         // Keyboard down
@@ -266,11 +265,11 @@ namespace MyCalculatorWinForms
             {
                 buttonEquals_Click(sender, e);
             }
-            else if (e.KeyCode == Keys.OemMinus)
+            else if ((e.KeyCode == Keys.OemMinus) ||(e.KeyCode == Keys.Subtract))
             {
                 buttonMinus_Click(sender, e);
             }
-            else if (e.KeyCode == Keys.Oem2)
+            else if ((e.KeyCode == Keys.Oem2) || (e.KeyCode == Keys.Divide))
             {
                 buttonDivide_Click(sender, e);
             }
@@ -278,11 +277,11 @@ namespace MyCalculatorWinForms
             {
                 buttonDecimalPoint_Click(sender, e);
             }
-            else if ((e.KeyCode == Keys.ShiftKey) || (e.KeyCode == Keys.D8))
+            else if (((e.KeyCode == Keys.ShiftKey) || (e.KeyCode == Keys.D8)) || (e.KeyCode == Keys.Multiply))
             {
                 buttonMultiple_Click(sender, e);
             }
-            else if ((e.KeyCode == Keys.ShiftKey) || (e.KeyCode == Keys.Oemplus))
+            else if (((e.KeyCode == Keys.ShiftKey) || (e.KeyCode == Keys.Oemplus)) || (e.KeyCode == Keys.Add))
             {
                 buttonPlus_Click(sender, e);
             }

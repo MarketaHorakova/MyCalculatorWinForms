@@ -45,13 +45,13 @@
             this.buttonNumber2 = new System.Windows.Forms.Button();
             this.buttonPlusMinus = new System.Windows.Forms.Button();
             this.buttonNumber0 = new System.Windows.Forms.Button();
-            this.buttonNumber3 = new System.Windows.Forms.Button();
             this.buttonDecimalPoint = new System.Windows.Forms.Button();
             this.buttonDivide = new System.Windows.Forms.Button();
             this.buttonEquals = new System.Windows.Forms.Button();
             this.buttonMultiple = new System.Windows.Forms.Button();
             this.textBoxHistory = new System.Windows.Forms.TextBox();
             this.textBoxDisplay = new System.Windows.Forms.TextBox();
+            this.buttonNumber3 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -333,21 +333,6 @@
             this.buttonNumber0.UseVisualStyleBackColor = true;
             this.buttonNumber0.Click += new System.EventHandler(this.buttonNumber0_Click);
             // 
-            // buttonNumber3
-            // 
-            this.buttonNumber3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonNumber3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNumber3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNumber3.Location = new System.Drawing.Point(173, 286);
-            this.buttonNumber3.Name = "buttonNumber3";
-            this.buttonNumber3.Size = new System.Drawing.Size(79, 60);
-            this.buttonNumber3.TabIndex = 3;
-            this.buttonNumber3.Text = "3";
-            this.buttonNumber3.UseVisualStyleBackColor = true;
-            this.buttonNumber3.Click += new System.EventHandler(this.buttonNumber3_Click);
-            // 
             // buttonDecimalPoint
             // 
             this.buttonDecimalPoint.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -448,6 +433,21 @@
             this.textBoxDisplay.Text = "0";
             this.textBoxDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // buttonNumber3
+            // 
+            this.buttonNumber3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonNumber3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNumber3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNumber3.Location = new System.Drawing.Point(173, 286);
+            this.buttonNumber3.Name = "buttonNumber3";
+            this.buttonNumber3.Size = new System.Drawing.Size(79, 60);
+            this.buttonNumber3.TabIndex = 3;
+            this.buttonNumber3.Text = "3";
+            this.buttonNumber3.UseVisualStyleBackColor = true;
+            this.buttonNumber3.Click += new System.EventHandler(this.buttonNumber3_Click);
+            // 
             // FormCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,7 +457,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(260, 344);
+            this.MinimumSize = new System.Drawing.Size(258, 338);
             this.Name = "FormCalculator";
             this.Text = "Calculator";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormCalculator_KeyDown);

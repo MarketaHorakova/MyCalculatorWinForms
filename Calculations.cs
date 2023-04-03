@@ -48,7 +48,7 @@ namespace MyCalculatorWinForms
             return number1 / number2;
         }
 
-        public static string Revese(double number1)
+        public static string Reverse(double number1)
         {
             string numberReverseString = string.Empty;
             if (number1 < 0)
