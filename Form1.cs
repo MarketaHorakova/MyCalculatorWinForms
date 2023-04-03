@@ -40,20 +40,33 @@ namespace MyCalculatorWinForms
         }
         private void EqualsCompute()
         {
-            textBoxHistory.Text = textBoxHistory.Text + textBoxDisplay.Text + " = ";
-            double.TryParse(textBoxDisplay.Text, out MemoryNumber2);
-            if ((MemoryNumber2 == 0) && (MemoryOperator == "/"))
+            if (textBoxHistory.Text.Contains("="))
             {
-                textBoxDisplay.Text = "Cannot divide by zero";
-            }
-            else
-            {
+                textBoxHistory.Text = MemoryNumber1 + " " + MemoryOperator + " " + MemoryNumber2 + " = ";
                 MemoryResult = Calculations.CalculateSwitch(MemoryNumber1, MemoryNumber2, MemoryOperator);
                 textBoxHistory.Text += MemoryResult;
                 textBoxDisplay.Text = string.Empty + MemoryResult;
+                MemoryNumber1 = MemoryResult;
+                MemoryResult = 0;
             }
-
-            ClearMemory();
+            else
+            {
+                textBoxHistory.Text = textBoxHistory.Text + textBoxDisplay.Text + " = ";
+                double.TryParse(textBoxDisplay.Text, out MemoryNumber2);
+                if ((MemoryNumber2 == 0) && (MemoryOperator == "/"))
+                {
+                    textBoxDisplay.Text = "Cannot divide by zero";
+                    ClearMemory();
+                }
+                else
+                {
+                    MemoryResult = Calculations.CalculateSwitch(MemoryNumber1, MemoryNumber2, MemoryOperator);
+                    textBoxHistory.Text += MemoryResult;
+                    textBoxDisplay.Text = string.Empty + MemoryResult;
+                    MemoryNumber1 = MemoryResult;
+                    MemoryResult = 0;
+                }
+            }
         }
 
         private void Compute(string UserOperator)
@@ -71,9 +84,9 @@ namespace MyCalculatorWinForms
                 EqualsCompute();
                 MemoryOperator = UserOperator;
                 double.TryParse(textBoxDisplay.Text, out MemoryNumber1);
-                textBoxHistory.Text = MemoryNumber1 + " " + MemoryOperator;
+                textBoxHistory.Text = MemoryNumber1 + " " + MemoryOperator + " ";
                 textBoxDisplay.Text = string.Empty;
-                
+
             }
         }
 
