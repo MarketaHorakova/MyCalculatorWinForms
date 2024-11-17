@@ -1,0 +1,113 @@
+﻿@page "/calculator"
+@using MyCalculatorBlazor.Data
+
+<h3>Calculator</h3>
+
+<div class="calculator-container">
+   <div class="display">
+       <input class="history-display" @bind="History" readonly />
+       <input class="main-display" @bind="Display" readonly />
+   </div>
+   <div class="buttons">
+       <button @onclick="ClearEntry">CE</button>
+       <button @onclick="Clear">C</button>
+       <button @onclick="Backspace">>>></button>
+       <button @onclick='() => Operation("+")'>+</button>
+
+       <button @onclick='() => AppendNumber("7")'>7</button>
+       <button @onclick='() => AppendNumber("8")'>8</button>
+       <button @onclick='() => AppendNumber("9")'>9</button>
+       <button @onclick='() => Operation("-")'>-</button>
+
+       <button @onclick='() => AppendNumber("4")'>4</button>
+       <button @onclick='() => AppendNumber("5")'>5</button>
+       <button @onclick='() => AppendNumber("6")'>6</button>
+       <button @onclick='() => Operation("*")'>*</button>
+
+       <button @onclick='() => AppendNumber("1")'>1</button>
+       <button @onclick='() => AppendNumber("2")'>2</button>
+       <button @onclick='() => AppendNumber("3")'>3</button>
+       <button @onclick='() => Operation("/")'>/</button>
+
+       <button @onclick="ToggleSign">+/-</button>
+       <button @onclick='() => AppendNumber("0")'>0</button>
+       <button @onclick='() => AppendNumber(".")'>.</button>
+       <button @onclick="Calculate">=</button>
+   </div>
+</div>
+
+@code {
+   private string Display { get; set; } = "0";
+   private string History { get; set; } = "";
+   private double? number1 = null;
+   private double? number2 = null;
+   private string? chosenOperator = null;
+
+   private void AppendNumber(string number)
+   {
+       if (Display == "0" && number != ".")
+       {
+           Display = number;
+       }
+       else
+       {
+           Display += number;
+       }
+   }
+
+   private void ClearEntry()
+   {
+       Display = "0";
+   }
+
+   private void Clear()
+   {
+       Display = "0";
+       History = "";
+       number1 = null;
+       number2 = null;
+       chosenOperator = null;
+   }
+
+   private void Backspace()
+   {
+       Display = ButtonActions.DeleteText(Display);
+   }
+
+   private void ToggleSign()
+   {
+       Display = Calculations.Revese(double.Parse(Display));
+   }
+
+   private void Operation(string operation)
+   {
+       if (number1 == null)
+       {
+           number1 = double.Parse(Display);
+           chosenOperator = operation;
+           History = Display + " " + operation;
+           Display = "0";
+       }
+       else
+       {
+           number2 = double.Parse(Display);
+           number1 = Calculations.CalculateSwitch((double)number1, (double)number2, chosenOperator);
+           chosenOperator = operation;
+           History = number1 + " " + operation;
+           Display = "0";
+       }
+   }
+
+   private void Calculate()
+   {
+       if (number1 != null && chosenOperator != null)
+       {
+           number2 = double.Parse(Display);
+           Display = Calculations.CalculateSwitch((double)number1, (double)number2, chosenOperator).ToString();
+           History = "";
+           number1 = null;
+           number2 = null;
+           chosenOperator = null;
+       }
+   }
+}
