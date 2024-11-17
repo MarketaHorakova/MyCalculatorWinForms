@@ -8,32 +8,38 @@
        <input class="history-display" @bind="History" readonly />
        <input class="main-display" @bind="Display" readonly />
    </div>
-   <div class="buttons">
-       <button @onclick="ClearEntry">CE</button>
-       <button @onclick="Clear">C</button>
-       <button @onclick="Backspace">>>></button>
-       <button @onclick='() => Operation("+")'>+</button>
-
-       <button @onclick='() => AppendNumber("7")'>7</button>
-       <button @onclick='() => AppendNumber("8")'>8</button>
-       <button @onclick='() => AppendNumber("9")'>9</button>
-       <button @onclick='() => Operation("-")'>-</button>
-
-       <button @onclick='() => AppendNumber("4")'>4</button>
-       <button @onclick='() => AppendNumber("5")'>5</button>
-       <button @onclick='() => AppendNumber("6")'>6</button>
-       <button @onclick='() => Operation("*")'>*</button>
-
-       <button @onclick='() => AppendNumber("1")'>1</button>
-       <button @onclick='() => AppendNumber("2")'>2</button>
-       <button @onclick='() => AppendNumber("3")'>3</button>
-       <button @onclick='() => Operation("/")'>/</button>
-
-       <button @onclick="ToggleSign">+/-</button>
-       <button @onclick='() => AppendNumber("0")'>0</button>
-       <button @onclick='() => AppendNumber(".")'>.</button>
-       <button @onclick="Calculate">=</button>
-   </div>
+   <table class="buttons">
+       <tr>
+            <td><button @onclick="ClearEntry">CE</button></td>
+            <td><button @onclick="Clear">C</button></td>
+            <td><button @onclick="Backspace">>>></button></td>
+            <td><button @onclick='() => Operation("+")'>+</button></td>
+       </tr>
+       <tr>
+            <td><button @onclick='() => AppendNumber("7")'>7</button></td>
+            <td><button @onclick='() => AppendNumber("8")'>8</button></td>
+            <td><button @onclick='() => AppendNumber("9")'>9</button></td>
+            <td><button @onclick='() => Operation("-")'>-</button></td>
+       </tr>
+        <tr>
+            <td><button @onclick='() => AppendNumber("4")'>4</button></td>
+            <td><button @onclick='() => AppendNumber("5")'>5</button></td>
+            <td><button @onclick='() => AppendNumber("6")'>6</button></td>
+            <td><button @onclick='() => Operation("*")'>*</button></td>
+        </tr>
+        <tr>
+            <td><button @onclick='() => AppendNumber("1")'>1</button></td>
+            <td><button @onclick='() => AppendNumber("2")'>2</button></td>
+            <td><button @onclick='() => AppendNumber("3")'>3</button></td>
+            <td><button @onclick='() => Operation("/")'>/</button></td>
+        </tr>
+        <tr>
+            <td><button @onclick="ToggleSign">+/-</button></td>
+            <td><button @onclick='() => AppendNumber("0")'>0</button></td>
+            <td><button @onclick='() => AppendNumber(".")'>.</button></td>
+            <td><button @onclick="Calculate">=</button></td>
+       </tr>
+   </table>
 </div>
 
 @code {
